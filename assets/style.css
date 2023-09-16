@@ -1,0 +1,235 @@
+/* @import url('assets/fonts/Roboto-Bold.ttf'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+:root {
+    /* --primary: (4, 100%, 67%); */
+    --primary-clr: hsl(4, 100%, 67%);
+    --dark-slate-grey-cls: hsl(234, 29%, 20%);
+    --charcoal-grey-cls: hsl(235, 18%, 26%);  
+    --Grey-clr: hsl(231, 7%, 60%);
+    --White-clr: hsl(0, 0%, 100%);
+
+    --grad-clr: (to right bottom, hsl(234, 29%, 20%), hsl(4, 100%, 67%));
+
+
+    --font-family: 'Roboto', sans-serif;
+    --small-font-size: 16px;
+    --large-font-size: clamp(2em, 5vw, 3em);
+}
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+svg,
+img {
+    width: 100%;
+}
+body {
+    background-color: var(--charcoal-grey-cls);
+}
+main {
+
+    background-color: var(--White-clr);
+    display: grid;
+    gap: min(2.5em, 3vh);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'image-content'
+        'text-content';
+        min-height: 100vh;
+        /* To be remove */
+        /* display: none; */
+}
+.text-content {
+    padding-inline: min(1.7em, 7vw);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+header  h1 {
+    font-size: var(--large-font-size);
+    font-weight: 700;
+    color: var(--charcoal-grey-cls);
+    /* border: 2px solid red; */
+}
+article {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-block: 1em;
+}
+article > p {
+    padding-block-end:  0.7em;
+}
+.text {
+    line-height: 1.5;
+    font-size: var(--small-font-size);
+    color: var(--charcoal-grey-cls);
+}
+figure {
+    display: flex;
+    gap: 1.5em;
+    align-items: flex-start;
+}
+figure img {
+    width: 25px;
+}
+
+/* Form */
+
+form {
+    margin-block: 1em;
+    /* border: 2px solid blue; */
+}
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 1.5em ;
+}
+
+input,
+button {
+    padding: 1em ;
+    width: 100%;
+    border-radius: 7px;
+    font-size: var(--small-font-size);
+    border: 1px solid #ccc;
+    outline: none;
+    margin-top: .7em;
+
+}
+input {
+    color: var(--dark-slate-grey-cls);
+}
+input:focus-visible, input:focus {
+    border-color: var(--dark-slate-grey-cls);
+}
+
+.send-btn{
+    color: #fff;
+    margin-top: 0;
+    background-color: var(--dark-slate-grey-cls);
+    font-weight: 700;
+    text-align: center;
+}
+.send-btn:hover {
+    background-image: linear-gradient(to right, var(--primary-clr), coral);
+}
+
+.detail-box {
+    display: flex;
+    justify-content: space-between;
+    font-size: small;
+    font-weight: 700;
+}
+
+label {
+    color: var(--charcoal-grey-cls);
+}
+.err-msg {
+    color: var(--primary-clr);
+    display: none;
+
+}
+.err {
+    border-color: var(--primary-clr);
+    color: var(--primary-clr);
+    background-color: lightpink;
+    opacity: .4;
+}
+
+
+/* Alert box */
+.pop-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    gap: min(1.4em, 2vh);
+    padding: 1.7em;
+    padding-top: 7em;
+    position: relative;
+    background-color: var(--White-clr);
+    display: none;
+
+}
+.pop-container img {
+    width: 5em;
+}
+.title {
+    font-size: 3em;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: .5em;
+}
+
+.pop-container .text {
+    line-height: 1.2;
+    margin-block: 1.4em;
+}
+.pop-container button {
+    position: absolute;
+    bottom: 1.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--dark-slate-grey-cls);
+    color: var(--White-clr);
+    font-weight: 700;
+    width: 90%;
+
+}
+
+
+/* Large Screen */
+@media screen and (min-width: 778px) {
+    body {
+        background-color: var(--charcoal-grey-cls);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main {
+        width: min(90%, 60em);
+        border-radius: 2em;
+        margin: auto;
+        padding: 1em;
+        display: grid;
+        place-content: center;
+        gap: min(2.5em, 3vh);
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        'text-content image-content';
+        min-height: fit-content;
+     /* display: none;    */
+    }
+    .image-content {
+        grid-area: image-content;
+    }
+    .text-content {
+        grid-area: text-content;
+        padding: min(1.7em, 7vw);
+    }
+
+    .pop-container {
+        border-radius: 2em;
+        padding: 3em;
+        width: min(25em, 40vw);
+        min-height: 20em;
+    }
+    .pop-container img {
+        width: 3em;
+    }
+    .pop-container button {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        border-radius: 7px
+    }
+
+
+}
